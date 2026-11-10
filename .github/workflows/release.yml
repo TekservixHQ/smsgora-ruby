@@ -13,6 +13,17 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-      - uses: rubygems/configure-rubygems-credentials@v1.0.0
+      # Trusted publishing: swap GitHub's OIDC token for a 15-minute RubyGems push key.
+      # owner = RubyGems account ID that owns the new gem (tekservix).
+      - name: Get RubyGems push key
+        run: |
+          jwt=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=rubygems.org" | jq -r .value)
+          resp=$(curl -sS -X POST https://rubygems.org/api/v1/oidc/trusted_publisher/exchange_token \
+            -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg jwt "$jwt" '{jwt: $jwt, owner: "255883"}')")
+          key=$(echo "$resp" | jq -r '.rubygems_api_key // empty')
+          if [ -z "$key" ]; then echo "$resp"; exit 1; fi
+          echo "::add-mask::$key"
+          echo "GEM_HOST_API_KEY=$key" >> "$GITHUB_ENV"
       - run: gem build *.gemspec
       - run: gem push *.gem
