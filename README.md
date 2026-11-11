@@ -2,6 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/smsgora.svg)](https://rubygems.org/gems/smsgora)
 
+**SMS Gora SMS Gateway** - official Ruby client: send and receive SMS through your own Android phones. By Tekservix.
+
 Ruby client for the [SMS Gora SMS Gateway](https://tekservix.com/smsgora/) API.
 
 SMS Gora turns Android phones with ordinary SIM cards into an SMS gateway. Your server calls the API, a linked phone sends the text, and replies and delivery reports come back to you. There's no sender ID registration and no per-message fee from us: your mobile operator bills the texts like any SMS.
