@@ -13,7 +13,7 @@ require 'uri'
 #
 # Docs: https://tekservix.com/smsgora/docs/
 module SmsGora
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
   DEFAULT_BASE_URL = 'https://tekservix.com/smsgora/api/v1'
 
   # Raised when the API answers with an error.

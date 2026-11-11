@@ -5,8 +5,8 @@ require_relative 'lib/smsgora'
 Gem::Specification.new do |s|
   s.name        = 'smsgora'
   s.version     = SmsGora::VERSION
-  s.summary     = 'Official Ruby client for the SMS Gora SMS Gateway API'
-  s.description = 'Send and receive SMS through your own Android phones with SMS Gora: delivery reports, scheduled and bulk sending, and signed webhooks. Works in Rails, Sinatra and plain Ruby.'
+  s.summary     = 'SMS Gora SMS Gateway: official Ruby client by Tekservix'
+  s.description = 'SMS Gora SMS Gateway. Send and receive SMS through your own Android phones with SMS Gora: delivery reports, scheduled and bulk sending, and signed webhooks. Works in Rails, Sinatra and plain Ruby.'
   s.authors     = ['Tekservix']
   s.email       = 'support@tekservix.com'
   s.homepage    = 'https://tekservix.com/smsgora/'
